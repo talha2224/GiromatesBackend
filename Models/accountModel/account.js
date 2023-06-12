@@ -30,6 +30,13 @@ const registerSchema = new mongoose.Schema({
         default:null
 
     },
+    OTP:{
+        type:Number,
+        default:null
+    },
+    validTill:{type:Date,default:null},
+    isVerified:{type:Boolean,default:false}
+
     
 })
 

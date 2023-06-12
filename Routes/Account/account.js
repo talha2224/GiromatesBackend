@@ -34,4 +34,27 @@ router.get('/single/:id',catchAsync(async(req,res)=>{
     res.send(user)
 }))
 
+//FORGET PASSWORD
+router.post("/forget/password",catchAsync(async (req, res) => {
+      let { email } = req.body;
+      let forgetPassword = await userAccountService.forgetPassword(email);
+      res.send(forgetPassword);
+    })
+  );
+  
+  //OTP VERIFICATION
+  router.post("/otp/verification",catchAsync(async (req, res) => {
+      let { otp } = req.body;
+      let resetPassword = await userAccountService.otpVerification(otp);
+      res.send(resetPassword);
+    })
+  );
+  
+  //RESET PASSWORD
+  router.post("/reset/password",catchAsync(async (req, res) => {
+      let { email, password } = req.body;
+      let resetPassword = await userAccountService.resetPassword(email, password);
+      res.send(resetPassword);
+    })
+  );
 module.exports= router
